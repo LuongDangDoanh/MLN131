@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Đăng nhập{% endblock %}
+{% block content %}
+<h2>Đăng nhập bằng Google</h2>
+<p>Đây là phiên bản mô phỏng của đăng nhập Google. Vui lòng nhập tên của bạn để tiếp tục.</p>
+<form method="post" action="{{ url_for('login') }}">
+    <label for="username">Tên người dùng (Google):</label>
+    <input type="text" id="username" name="username" required>
+    <button type="submit">Đăng nhập</button>
+</form>
+{% endblock %}

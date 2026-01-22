@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Tạo tôn giáo mới{% endblock %}
+{% block content %}
+<h2>Tạo tôn giáo của bạn</h2>
+<p>Hãy đặt tên cho tôn giáo của bạn. Bạn sẽ có 100 người theo đạo ban đầu. Trong mỗi vòng, bạn cần đưa ra luật lệ và sự kiện mà không có gợi ý sẵn.</p>
+<form method="post" action="{{ url_for('create_religion') }}">
+    <label for="religion_name">Tên tôn giáo:</label>
+    <input type="text" id="religion_name" name="religion_name" required>
+    <button type="submit">Bắt đầu</button>
+</form>
+{% endblock %}

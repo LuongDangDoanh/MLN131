@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Trang chủ{% endblock %}
+{% block content %}
+<h2>Chào mừng bạn đến với trò chơi</h2>
+<p>Trong trò chơi này, bạn sẽ trải nghiệm vai trò của người lãnh đạo tôn giáo trong thời kỳ quá độ lên chủ nghĩa xã hội. Hãy đưa ra những chính sách phù hợp để phát triển tôn giáo của bạn và tuân thủ những quy định của Nhà nước.</p>
+<div class="home-buttons">
+    <a class="button" href="{{ url_for('start_game') }}">Bắt đầu trò chơi</a>
+    <a class="button" href="{{ url_for('leaderboard') }}">Bảng xếp hạng</a>
+</div>
+{% endblock %}

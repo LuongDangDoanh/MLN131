@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Chọn tôn giáo{% endblock %}
+{% block content %}
+<h2>Chọn tôn giáo để bắt đầu</h2>
+<form method="post" action="{{ url_for('start_game') }}">
+    <p>Hãy chọn một trong những tôn giáo có sẵn hoặc tự tạo tôn giáo của bạn:</p>
+    <div class="religion-list">
+        {% for religion in religions %}
+        <div>
+            <input type="radio" id="rel{{ loop.index }}" name="religion_choice" value="{{ religion }}" required>
+            <label for="rel{{ loop.index }}">{{ religion }}</label>
+        </div>
+        {% endfor %}
+        <div>
+            <input type="radio" id="custom" name="religion_choice" value="custom" required>
+            <label for="custom">Tạo tôn giáo mới</label>
+        </div>
+    </div>
+    <button type="submit">Tiếp tục</button>
+</form>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Bảng xếp hạng{% endblock %}
+{% block content %}
+<h2>Bảng xếp hạng</h2>
+{% if leaderboard %}
+<table class="leaderboard-table">
+    <thead>
+        <tr>
+            <th>Hạng</th>
+            <th>Tên người dùng</th>
+            <th>Tên tôn giáo</th>
+            <th>Điểm (số tín đồ)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for entry in leaderboard %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ entry['username'] }}</td>
+            <td>{{ entry['religion'] }}</td>
+            <td>{{ entry['score'] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>Chưa có người chơi nào đạt trên 1000 điểm.</p>
+{% endif %}
+{% endblock %}

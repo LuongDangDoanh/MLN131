@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}Vòng {{ round_number }} - {{ religion }}{% endblock %}
+{% block content %}
+<h2>{{ religion }}</h2>
+<p>Số người theo đạo hiện tại: <strong>{{ followers }}</strong></p>
+<p>Vòng chơi: {{ round_number }} / 10</p>
+
+<details class="regulations">
+    <summary>📖 Quy định của Nhà nước</summary>
+    <h3>Chính sách</h3>
+    <ul>
+        {% for rule in regulations['policy'] %}
+        <li>{{ rule }}</li>
+        {% endfor %}
+    </ul>
+    <h3>Nghiêm cấm</h3>
+    <ul>
+        {% for rule in regulations['prohibited'] %}
+        <li>{{ rule }}</li>
+        {% endfor %}
+    </ul>
+    <p><em>Lưu ý: Nếu lựa chọn của bạn vi phạm những quy định này, trò chơi sẽ kết thúc và điểm bằng 0.</em></p>
+</details>
+
+<form method="post" action="{{ url_for('play_game') }}" class="decision-form">
+    <label for="decision">Chính sách / Sự kiện bạn lựa chọn hoặc đề xuất:</label>
+    {% if suggestions %}
+    <p>Bạn có thể chọn một trong các gợi ý sau hoặc tự nhập:</p>
+    <ul class="suggestions">
+        {% for s in suggestions %}
+        <li><button type="button" class="suggestion-button" onclick="document.getElementById('decision').value='{{ s }}'">{{ s }}</button></li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <textarea id="decision" name="decision" rows="4" cols="60" placeholder="Nhập chính sách/sự kiện của bạn ở đây..." required></textarea>
+    <div>
+        <button type="submit">Gửi quyết định</button>
+    </div>
+</form>
+
+<script>
+// Simple script to handle suggestion clicks
+document.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('.suggestion-button');
+    buttons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const text = this.textContent;
+            document.getElementById('decision').value = text;
+        });
+    });
+});
+</script>
+{% endblock %}
